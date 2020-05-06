@@ -1,0 +1,38 @@
+name: dynahack
+base: core18
+version: '0.6.0'
+summary: DynaHack
+description: |
+  A NetHack variant with randomized equipment, new items, new monsters, new maps,
+  new challenges and an advanced ASCII interface. https://tung.github.io/DynaHack/
+
+
+grade: stable
+confinement: strict
+
+parts:
+  dynahack:
+    plugin: cmake
+    source: https://github.com/tung/DynaHack.git
+    source-tag: "v0.6.0"
+    build-packages:
+      - zlib1g-dev
+      - libncursesw5-dev
+      - bison
+      - flex
+      - build-essential
+    stage-packages:
+      - libncursesw5
+    override-build: |
+      snapcraftctl build
+      mv $SNAPCRAFT_PART_INSTALL/root/dynahack/dynahack-data/* $SNAPCRAFT_PART_INSTALL/
+      rm -rf $SNAPCRAFT_PART_INSTALL/root
+
+apps:
+  dynahack:
+    command: dynahack -H $SNAP -V $SNAP_USER_COMMON -U $SNAP_USER_COMMON
+    plugs: 
+      - network
+    environment:
+      LC_ALL: "C.UTF-8"
+      LANG: "C.UTF-8"

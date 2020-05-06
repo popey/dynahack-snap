@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=DynaHack
+Comment=A NetHack variant with randomized equipment, new items, new monsters, new maps, new challenges and an advanced ASCII interface.
+Icon=${SNAP}/meta/gui/dynahack.png
+Exec=dynahack
+Terminal=true
+
+
