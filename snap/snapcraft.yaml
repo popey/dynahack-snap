@@ -1,6 +1,6 @@
 name: dynahack
 base: core18
-version: '0.6.0'
+version: 'v0.6.0'
 summary: DynaHack
 description: |
   A NetHack variant with randomized equipment, new items, new monsters, new maps,
